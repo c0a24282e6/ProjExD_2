@@ -1,6 +1,5 @@
 import os
 import random
-import sys
 import time
 import pygame as pg
 
@@ -59,8 +58,8 @@ def init_bb_imgs() -> tuple[list[pg.Surface],list[int]]:
     return list,sbb_accs
 
 
-def get_kk_img(sum_mv: tuple[int, int]) -> pg.Surface:
-    
+#def get_kk_img(sum_mv: tuple[int, int]) -> pg.Surface:
+
 
 
 def main():
@@ -130,4 +129,3 @@ if __name__ == "__main__":
     pg.init()
     main()
     pg.quit()
-    sys.exit()
