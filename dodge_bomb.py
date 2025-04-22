@@ -59,7 +59,8 @@ def init_bb_imgs() -> tuple[list[pg.Surface],list[int]]:
     return list,sbb_accs
 
 
-
+def get_kk_img(sum_mv: tuple[int, int]) -> pg.Surface:
+    
 
 
 def main():
