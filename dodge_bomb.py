@@ -17,7 +17,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     """ 
     引数：こうかとんRectまたは爆弾Rect
     戻り値：判定結果タプル（横，縦）
-    画面内ならTrue，画面外ならFalse
+    画面内ならTrue,画面外ならFalse
     """
     yoko, tate = True, True  # 横，縦方向用の変数
     # 横方向判定
@@ -55,6 +55,11 @@ def main():
             if event.type == pg.QUIT: 
                 return
         screen.blit(bg_img, [0, 0]) 
+
+        # こうかとんRectと爆弾Rectが重なっていたら
+        if kk_rct.colliderect(bb_rct): 
+            print("Game Over")
+            return
 
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
