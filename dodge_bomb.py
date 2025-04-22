@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+import time
 import pygame as pg
 
 
@@ -27,6 +28,22 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     if rct.top < 0 or HEIGHT < rct.bottom: # 画面外だったら
         tate = False
     return yoko, tate
+
+def gameover(screen: pg.Surface) -> None:
+    black_img = pg.Surface((1100,650))
+    pg.draw.rect(black_img,(0,0,0),(0,0,1100,650))
+    black_img.set_alpha(150)
+    fonto = pg.font.Font(None,80)
+    penkouka_img=pg.image.load("fig/8.png")
+    kouka8 = pg.Surface((20,20))
+    pg.draw.rect(kouka8,(255,0,0),(0,0,50,50))
+
+    txt = fonto.render("GAME ORVER",True,(255,255,255))
+    screen.blit(black_img,[0,0])
+    screen.blit(txt,[380,250])
+    screen.blit(penkouka_img,[320,240])
+    screen.blit(penkouka_img,[780,240])
+    pg.display.update()
 
 
 
@@ -58,8 +75,10 @@ def main():
 
         # こうかとんRectと爆弾Rectが重なっていたら
         if kk_rct.colliderect(bb_rct): 
-            print("Game Over")
+            gameover(screen)
+            time.sleep(5)
             return
+            
 
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
